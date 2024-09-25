@@ -1,0 +1,11 @@
+footer{
+    padding: 1rem;
+    text-align:right;
+    margin-top: auto;
+    
+}
+hr {
+    border: none; /* Removes the default border */
+    height: 0.5px; /* Sets the height of the hr */
+    background-color: var(--btn-color); /* Sets the background color using a variable */
+  }
