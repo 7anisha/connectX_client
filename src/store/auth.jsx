@@ -12,6 +12,9 @@ export const AuthProvider = ({ children }) => {
   // Centralized authorization token for API calls
   const authorizationToken = token ? `Bearer ${token}` : null;
 
+  const apiUrl = process.env.NODE_ENV === 'production' ? 'https://connectx-server-4.onrender.com' : 'http://localhost:5000';
+
+
   // Store token in localStorage and update state
   const storeTokenInLS = (serverToken) => {
     setToken(serverToken);
@@ -37,7 +40,7 @@ export const AuthProvider = ({ children }) => {
 
     try {
       setIsLoading(true);
-      const response = await fetch("http://localhost:5000/api/auth/user", {
+      const response = await fetch(`${apiUrl}/api/auth/user`, {
         method: "GET",
         headers: {
           Authorization: authorizationToken,
@@ -63,7 +66,7 @@ export const AuthProvider = ({ children }) => {
   // Fetch available services from the backend
   const getServices = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/data/service", {
+      const response = await fetch(`${apiUrl}/api/data/service`, {
         method: "GET",
       });
 
